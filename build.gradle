@@ -1,0 +1,92 @@
+buildscript {
+    ext.kotlin_version = '1.4.0'
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "com.jaredsburrows:gradle-spoon-plugin:1.5.0"
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.21.2"
+        classpath "com.github.marcphilipp.nexus-publish-plugin:nexus-publish-plugin:0.4.0"
+        classpath 'digital.wup:android-maven-publish:3.6.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'io.codearte.nexus-staging'
+
+
+ext {
+    targetSdkVersion = 29
+    buildToolsVersion = '29.0.3'
+    minSdkVersion = '14'
+
+    snapshotRepository = "https://oss.sonatype.org/content/repositories/snapshots"
+    releaseRepository = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+
+    isSnapshot = {project.version.endsWith('-SNAPSHOT')}
+}
+
+nexusStaging {
+    if (project.hasProperty('ossrhUsername')){
+        username = ossrhUsername
+        password = ossrhPassword
+    }
+}
+
+
+allprojects {
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+        maven {
+            url snapshotRepository
+        }
+        maven {
+            url releaseRepository
+        }
+    }
+    version = "4.8.4"
+    ext.cucumber_javaVersion = '4.8.1'
+    group = 'io.cucumber'
+}
+
+task closeAndReleaseRepositoryIfRelease(group: 'release',dependsOn: isSnapshot()?null:['closeAndReleaseRepository'])
+
+
+subprojects { subproject ->
+
+
+    ext.addAndroidConfig ={
+        android {
+            compileSdkVersion rootProject.ext.targetSdkVersion
+            buildToolsVersion rootProject.ext.buildToolsVersion
+
+            defaultConfig {
+                minSdkVersion rootProject.ext.minSdkVersion
+                targetSdkVersion rootProject.ext.targetSdkVersion
+            }
+
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+
+            lintOptions {
+                abortOnError false
+            }
+
+            testOptions {
+                unitTests {
+                    includeAndroidResources = true
+                }
+            }
+        }
+
+
+    }
+}
