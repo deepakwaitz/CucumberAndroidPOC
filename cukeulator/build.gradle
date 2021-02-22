@@ -11,6 +11,7 @@ addAndroidConfig()
 
 android {
 
+
     defaultConfig {
         multiDexEnabled true
         applicationId "cucumber.cukeulator"
@@ -22,7 +23,13 @@ android {
             // clearPackageData: 'true'
         //]
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
     packagingOptions {
         exclude 'LICENSE.txt'
     }
@@ -76,7 +83,42 @@ dependencies {
 
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-simplexml:$retrofit_version"
+
+    //Koin
+    implementation 'commons-io:commons-io:2.7'
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+    //Lifecycle,ViewModel
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutines_version"
+    implementation "androidx.work:work-runtime-ktx:2.4.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+    //OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
+
+
+
 
 //    testImplementation 'junit:junit:4.12'
 //    testImplementation 'org.mockito:mockito-core:2.10.0'

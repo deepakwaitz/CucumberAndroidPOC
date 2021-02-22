@@ -31,7 +31,7 @@ import static org.junit.Assert.assertNotNull;
 public class CalculatorActivitySteps   {
     @Given("I have {int} cukes in my belly")
     public void i_have_n_cukes_in_my_belly(int cukes) {
-        System.out.format("Cukes: %n\n", cukes);
+      //  System.out.format("Cukes: %n\n", cukes);
 
     }
 
