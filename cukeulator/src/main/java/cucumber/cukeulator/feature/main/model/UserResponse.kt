@@ -9,4 +9,4 @@ data class UserResponse(
     var items:ArrayList<UserList>
 
 )
-data class UserList(var login:String)
+data class UserList(var id:Int,var login:String,var node_id:String,var avatar_url:String)
