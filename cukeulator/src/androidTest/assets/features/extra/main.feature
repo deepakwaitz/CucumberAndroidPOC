@@ -8,5 +8,5 @@ Feature: Get User List
     Then Click Button
     And Check Internet Connection
     Then If network Available Make API
-    When Success Response
+    When Success Response(true)
     And Show the Result

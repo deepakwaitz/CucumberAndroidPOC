@@ -18,7 +18,7 @@ import io.cucumber.junit.CucumberOptions;
         features = "features",
         strict = true
 )
-public class CukeulatorAndroidJUnitRunner extends AndroidJUnitRunner {
+public class CukeulatorAndroidJUnitRunner extends CucumberAndroidJUnitRunner {
 
     @Override
     public void onCreate(final Bundle bundle) {

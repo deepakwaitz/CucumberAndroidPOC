@@ -117,9 +117,6 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 
-
-
-
 //    testImplementation 'junit:junit:4.12'
 //    testImplementation 'org.mockito:mockito-core:2.10.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
