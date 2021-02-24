@@ -3,7 +3,7 @@ package cucumber.cukeulator.test;
 import android.util.Log;
 
 import androidx.test.espresso.ViewAssertion;
-import androidx.test.rule.ActivityTestRule;
+//import androidx.test.rule.ActivityTestRule;
 
 import com.follett.fss.searchread.feature.schoolpicker.model.UserList;
 import com.follett.fss.searchread.feature.schoolpicker.model.UserResponse;

@@ -3,7 +3,7 @@ package cucumber.cukeulator.test;
 import android.content.Intent;
 
 import androidx.test.filters.SmallTest;
-import androidx.test.rule.ActivityTestRule;
+//import androidx.test.rule.ActivityTestRule;
 
 
 import org.junit.Before;
@@ -24,11 +24,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
  */
 public class InstrumentationNonCucumberTest {
 
-    private ActivityTestRule<CalculatorActivity> activityTestRule = new ActivityTestRule<>(CalculatorActivity.class, false, false);
+    //private ActivityTestRule<CalculatorActivity> activityTestRule = new ActivityTestRule<>(CalculatorActivity.class, false, false);
 
     @Before
     public void setUp() throws Exception {
-        activityTestRule.launchActivity(new Intent());
+        //activityTestRule.launchActivity(new Intent());
     }
 
     @SmallTest
